@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    padding: 0 5px;
+    border-bottom: 2px solid black;
+}
+
+nav button{
+    border: none;
+    background: none;
+    color: purple;
+}
+
+nav h3{
+    margin: 0;
+    padding: 0;
+}
+
+#quizContent {
+    width: 80%;
+    margin: 5vh auto;
+    text-align: center;
+}
