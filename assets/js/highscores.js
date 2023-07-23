@@ -11,3 +11,6 @@ clearButton.addEventListener("click", function() {
     localStorage.clear();
     location.reload();
 });
+
+var storeHighScores = localStorage.getItem("storeHighScores");
+storeHighScores = JSON.parse(storeHighScores);
