@@ -1,3 +1,8 @@
+var score = 0;
+var container = document.querySelector("#container");
+var quizContent = document.querySelector("quizContent");
+
+
 const questions=[
     {
         Q:"How do you add a comment to a CSS or JS file?",

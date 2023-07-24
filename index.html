@@ -8,27 +8,17 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a View High Scores></a>
-            <a Timer></a>
-        </nav>
-    </header>
+    <a href="HighScores.html">View Highscores</a>
 
-    <nav>
-        <button id="highscores">High Score:</button>
-        <h3>Time: <span id="clock">60</span></h3>
-    </nav>
-
-    <main id="container">
-        <div id="quizContent">
-            <h1>Coding Quiz Challenge</h1>
+    <div id="wrapper">
+        <div id="Time"></div>
+        <div id="questions">
+            <h1>Coding Quiz</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button id="runquiz">Start Quiz</button>
+            <ul id="choicesUl"></ul>
+            <button id="startQuiz">Start Quiz</button>
         </div>
-
-    </main>
-
+    </div>
 
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>

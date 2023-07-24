@@ -1,36 +1,33 @@
-body{
-    margin: 0;
-
-}
-
-nav{
-    display: flex;
-    justify-content: space-between;
-    background-color: lightgray;
-    padding: 0 5px;
-    border-bottom: 2px solid black;
-}
-
-nav button{
-    border: none;
-    background: none;
-    color: purple;
-}
-
-nav h3{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    border: 1px solid blueviolet;
+    background-color: rgb(80, 164, 136);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-#quizContent {
-    width: 80%;
-    margin: 5vh auto;
-    text-align: center;
+#wrapper {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    width: 500px;
+    height: 500px;
+    border: 1px solid purple;
 }
 
-button{
-    color: white;
-    background: purple;
-    padding: 5px;
-    border-radius: 7px;
+#startQuiz {
+    background-color: rgb(99, 141, 197);
+    margin-left: 33%;
+    padding: 15px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+#questions {
+    margin: 20px;
+}
+
+#time {
+    float: right;
 }
