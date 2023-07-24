@@ -24,8 +24,9 @@ var questions=[
         question:"String values must be enclosed with ___",
         Choices:["parenthesis","quotes","commas","curly brackets"],
         Answer:"quotes"
-    }
+    },
 ];
+
 // Declared variables
 var score = 0;
 var questionIndex = 0;
@@ -105,9 +106,76 @@ function compare(event) {
     } else {
         render(questionIndex);
     }
-    questionsDiv.appendChild(createDiv);
+    questions.appendChild(createDiv);
 }
 
+// Function to append the last page
 function allDone() {
-    
+    questions.innerHTML = "";
+    time.innerHTML = "";
+
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "All done!"
+
+    questions.appendChild(createH1);
+
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+    question.appendChild(createP);
+
+
+    if (secondsLeft >=0) {
+        var timeLeft = secondsLeft;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        createP.textContent = "Your final score is: " + timeLeft;
+
+        questions.appendChild(createP2);
+
+        var createLabel = document.createElement("label");
+        createLabel.setAttribute("id", "createLabel");
+        createLabel.textContent = "Enter your intials: ";
+
+        questions.appendChild(createLabel);
+
+        var createInput = document.createElement("input");
+        createInput.setAttribute("type", "text");
+        createInput.setAttribute("id", "initials");
+        createInput.textContent = "";
+
+        questions.appendChild(createInput);
+
+        var createSubmit = document.createElement("button");
+        createSubmit.setAttribute("type", "submit");
+        createSubmit.setAttribute ("id", "submit");
+        createSubmit.textContent = "Submit";
+
+        questions.appendChild(createSubmit);
+
+        createSubmit.addEventListener("click", function () {
+            var initials = create.Input.value;
+
+            if (initials === null) {
+                alert("No value entered. Please enter your initials");
+
+            } else {
+                var finalScore = {
+                    initials: initials,
+                    score: timeLeft
+                }
+
+                var allScores = local.Storage.getItem("allScores");
+                if (allScores === null) {
+                    allScores [];
+                } else {
+                    allScores = JSON.parse(allScores);
+                }
+                allScores.push(finalScore);
+                var newScore = JSON.stringify(allScores);
+                localStorage.setItem("allScores", newScore);
+
+                window.location.replace("./HighScores.HTML");
+            }
+        });
 }
