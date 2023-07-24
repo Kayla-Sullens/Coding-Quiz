@@ -2,28 +2,28 @@
 var questions=[
     {
         question:"How do you add a comment to a CSS or JS file?",
-        Choices:["*Comment*","//Comment","/*Comment","--Comment--"],
-        Answer:"//Comment"
+        comparehoices:["*Comment*","//Comment","/*Comment","--Comment--"],
+        answer:"//Comment"
     },
     {
         question:"What is the first index of an array?",
-        Choices:["0","1","First","Idk"],
-        Answer:"0"
+        choices:["0","1","First","Idk"],
+        answer:"0"
     },
     {
         question:"Which CSS property gives something rounded corners?",
-        Choices:["corner-round","rounding","border-radius","border"],
-        Answer:"border-radius"
+        choices:["corner-round","rounding","border-radius","border"],
+        answer:"border-radius"
     },
     {
         question:"What is a short section of code written to complete a task called?",
-        Choices:["Function","Array","Loop","Variable"],
-        Answer:"Function"
+        choices:["Function","Array","Loop","Variable"],
+        answer:"Function"
     },
     {
         question:"String values must be enclosed with ___",
-        Choices:["parenthesis","quotes","commas","curly brackets"],
-        Answer:"quotes"
+        choices:["parenthesis","quotes","commas","curly brackets"],
+        answer:"quotes"
     },
 ];
 
@@ -32,8 +32,8 @@ var score = 0;
 var questionIndex = 0;
 
 // Declared variables and start working code
-var time = document.querySelector("#time");
-var start = document.querySelector("#startQuiz");
+var currentTime = document.querySelector("#currentTime");
+var timer = document.querySelector("#starTime");
 var questions = document.querySelector("#questions");
 var wrapper = document.querySelector("#wrapper");
 
@@ -48,12 +48,12 @@ timer.addEventListener("click", function () {
     if (holdInterval === 0) {
         holdInterval = setINteval(function () {
             secondsLeft--;
-            time.textContent = "Time: " + secondsLeft;
+            currentTime.textContent = "Time: " + secondsLeft;
 
             if (secondsLeft <=0) {
                 clearInterval(holdInterval);
                 allDone();
-                time.textContent = "Out of Time!";
+                CurrentTime.textContent = "Out of Time!";
             }
         }, 1000);
     }
@@ -112,7 +112,7 @@ function compare(event) {
 // Function to append the last page
 function allDone() {
     questions.innerHTML = "";
-    time.innerHTML = "";
+    CurrentTime.innerHTML = "";
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
@@ -122,7 +122,7 @@ function allDone() {
 
     var createP = document.createElement("p");
     createP.setAttribute("id", "createP");
-    question.appendChild(createP);
+    questions.appendChild(createP);
 
 
     if (secondsLeft >=0) {
@@ -167,7 +167,7 @@ function allDone() {
 
                 var allScores = local.Storage.getItem("allScores");
                 if (allScores === null) {
-                    allScores [];
+                    allScores = [];
                 } else {
                     allScores = JSON.parse(allScores);
                 }
@@ -178,4 +178,5 @@ function allDone() {
                 window.location.replace("./HighScores.HTML");
             }
         });
+    }
 }
