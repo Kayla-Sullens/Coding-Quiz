@@ -2,7 +2,7 @@
 var questions=[
     {
         question:"How do you add a comment to a CSS or JS file?",
-        comparehoices:["*Comment*","//Comment","/*Comment","--Comment--"],
+        choices:["*Comment*","//Comment","/*Comment","--Comment--"],
         answer:"//Comment"
     },
     {
@@ -33,7 +33,7 @@ var questionIndex = 0;
 
 // Declared variables and start working code
 var currentTime = document.querySelector("#currentTime");
-var timer = document.querySelector("#starTime");
+var timer = document.querySelector("#startTime");
 var questions = document.querySelector("#questions");
 var wrapper = document.querySelector("#wrapper");
 
@@ -46,14 +46,14 @@ var ulCreate = document.createElement("ul");
 // Triggers the timer to start
 timer.addEventListener("click", function () {
     if (holdInterval === 0) {
-        holdInterval = setINteval(function () {
+        holdInterval = setInterval(function () {
             secondsLeft--;
             currentTime.textContent = "Time: " + secondsLeft;
 
             if (secondsLeft <=0) {
                 clearInterval(holdInterval);
                 allDone();
-                CurrentTime.textContent = "Out of Time!";
+                currentTime.textContent = "Out of Time!";
             }
         }, 1000);
     }
@@ -67,7 +67,7 @@ function render(questionIndex) {
 
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[questionIndex].question;
-        var userChoices = questions[question.Index].choices;
+        var userChoices = questions[questionIndex].choices;
         questions.textContent = userQuestion;
     }
 
@@ -112,7 +112,7 @@ function compare(event) {
 // Function to append the last page
 function allDone() {
     questions.innerHTML = "";
-    CurrentTime.innerHTML = "";
+    currentTime.innerHTML = "";
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
@@ -154,7 +154,7 @@ function allDone() {
         questions.appendChild(createSubmit);
 
         createSubmit.addEventListener("click", function () {
-            var initials = create.Input.value;
+            var initials = createInput.value;
 
             if (initials === null) {
                 alert("No value entered. Please enter your initials");

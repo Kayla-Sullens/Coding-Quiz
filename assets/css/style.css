@@ -48,7 +48,7 @@ li {
     border: 1px solid purple;
 }
 
-#startQuiz {
+#startTime {
     background-color: rgb(99, 141, 197);
     margin-left: 33%;
     padding: 15px;
@@ -60,7 +60,7 @@ li {
     margin: 20px;
 }
 
-#time {
+#currentTime {
     float: right;
 }
 
