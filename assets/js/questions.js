@@ -1,29 +1,29 @@
 // Var with array and object for quiz questions
-var questions=[
+var questions = [
     {
-        question:"How do you add a comment to a CSS or JS file?",
-        choices:["*Comment*","//Comment","/*Comment","--Comment--"],
-        answer:"//Comment"
+        question: "How do you add a comment to a CSS or JS file?",
+        choices: ["*Comment*", "//Comment", "/*Comment", "--Comment--"],
+        answer: "//Comment"
     },
     {
-        question:"What is the first index of an array?",
-        choices:["0","1","First","Idk"],
-        answer:"0"
+        question: "What is the first index of an array?",
+        choices: ["0", "1", "First", "Idk"],
+        answer: "0"
     },
     {
-        question:"Which CSS property gives something rounded corners?",
-        choices:["corner-round","rounding","border-radius","border"],
-        answer:"border-radius"
+        question: "Which CSS property gives something rounded corners?",
+        choices: ["corner-round", "rounding", "border-radius", "border"],
+        answer: "border-radius"
     },
     {
-        question:"What is a short section of code written to complete a task called?",
-        choices:["Function","Array","Loop","Variable"],
-        answer:"Function"
+        question: "What is a short section of code written to complete a task called?",
+        choices: ["Function", "Array", "Loop", "Variable"],
+        answer: "Function"
     },
     {
-        question:"String values must be enclosed with ___",
-        choices:["parenthesis","quotes","commas","curly brackets"],
-        answer:"quotes"
+        question: "String values must be enclosed with ___",
+        choices: ["parenthesis", "quotes", "commas", "curly brackets"],
+        answer: "quotes"
     },
 ];
 
@@ -32,10 +32,10 @@ var score = 0;
 var questionIndex = 0;
 
 // Declared variables and start working code
-var currentTime = document.querySelector("#currentTime");
-var timer = document.querySelector("#startTime");
-var questions = document.querySelector("#questions");
-var wrapper = document.querySelector("#wrapper");
+var currentTimeEl = document.querySelector("#currentTime");
+var timerEl = document.querySelector("#startTime");
+var questionsEl = document.querySelector("#questions");
+var wrapperEl = document.querySelector("#wrapper");
 
 // Timer variables and create a new element 
 var secondsLeft = 60;
@@ -44,16 +44,16 @@ var penalty = 10;
 var ulCreate = document.createElement("ul");
 
 // Triggers the timer to start
-timer.addEventListener("click", function () {
+timerEl.addEventListener("click", function () {
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
-            currentTime.textContent = "Time: " + secondsLeft;
+            currentTimeEl.textContent = "Time: " + secondsLeft;
 
-            if (secondsLeft <=0) {
+            if (secondsLeft <= 0) {
                 clearInterval(holdInterval);
                 allDone();
-                currentTime.textContent = "Out of Time!";
+                currentTimeEl.textContent = "Out of Time!";
             }
         }, 1000);
     }
@@ -62,19 +62,19 @@ timer.addEventListener("click", function () {
 
 // Renders questions and answer choices to the screen
 function render(questionIndex) {
-    questions.innerHTML = "";
+    questionsEl.innerHTML = "";
     ulCreate.innerHTML = "";
 
-    for (var i = 0; i < questions.length; i++) {
-        var userQuestion = questions[questionIndex].question;
-        var userChoices = questions[questionIndex].choices;
-        questions.textContent = userQuestion;
-    }
+    //for (var i = 0; i < questions.length; i++) {
+    var userQuestion = questions[questionIndex].question;
+    var userChoices = questions[questionIndex].choices;
+    questionsEl.textContent = userQuestion;
+    //}
 
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        questions.appendChild(ulCreate);
+        questionsEl.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
@@ -95,7 +95,7 @@ function compare(event) {
             secondsLeft = secondsLeft - penalty;
             createDiv.textConten = "Incorrect. The correct answer is: " + questions[questionIndex].answer;
         }
-        
+
     }
     // Question Index determines which number question the user is on
     questionIndex++;
@@ -106,52 +106,52 @@ function compare(event) {
     } else {
         render(questionIndex);
     }
-    questions.appendChild(createDiv);
+    questionsEl.appendChild(createDiv);
 }
 
 // Function to append the last page
 function allDone() {
-    questions.innerHTML = "";
-    currentTime.innerHTML = "";
+    questionsEl.innerHTML = "";
+    currentTimeEl.innerHTML = "";
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
     createH1.textContent = "All done!"
 
-    questions.appendChild(createH1);
+    questionsEl.appendChild(createH1);
 
     var createP = document.createElement("p");
     createP.setAttribute("id", "createP");
-    questions.appendChild(createP);
+    questionsEl.appendChild(createP);
 
 
-    if (secondsLeft >=0) {
+    if (secondsLeft >= 0) {
         var timeLeft = secondsLeft;
         var createP2 = document.createElement("p");
         clearInterval(holdInterval);
         createP.textContent = "Your final score is: " + timeLeft;
 
-        questions.appendChild(createP2);
+        questionsEl.appendChild(createP2);
 
         var createLabel = document.createElement("label");
         createLabel.setAttribute("id", "createLabel");
         createLabel.textContent = "Enter your intials: ";
 
-        questions.appendChild(createLabel);
+        questionsEl.appendChild(createLabel);
 
         var createInput = document.createElement("input");
         createInput.setAttribute("type", "text");
         createInput.setAttribute("id", "initials");
         createInput.textContent = "";
 
-        questions.appendChild(createInput);
+        questionsEl.appendChild(createInput);
 
         var createSubmit = document.createElement("button");
         createSubmit.setAttribute("type", "submit");
-        createSubmit.setAttribute ("id", "submit");
+        createSubmit.setAttribute("id", "submit");
         createSubmit.textContent = "Submit";
 
-        questions.appendChild(createSubmit);
+        questionsEl.appendChild(createSubmit);
 
         createSubmit.addEventListener("click", function () {
             var initials = createInput.value;
@@ -165,7 +165,7 @@ function allDone() {
                     score: timeLeft
                 }
 
-                var allScores = local.Storage.getItem("allScores");
+                var allScores = localStorage.getItem("allScores");
                 if (allScores === null) {
                     allScores = [];
                 } else {
@@ -175,7 +175,7 @@ function allDone() {
                 var newScore = JSON.stringify(allScores);
                 localStorage.setItem("allScores", newScore);
 
-                window.location.replace("./HighScores.HTML");
+                window.location.replace("./highscores.html");
             }
         });
     }
