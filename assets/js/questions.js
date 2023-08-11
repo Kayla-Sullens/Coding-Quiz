@@ -66,14 +66,14 @@ function nextQuestion(questionIndex) {
     var showQuestion = document.createElement("h3");
 
     for (var i = 0; i < questions.length; i++) {
-    var showQuestion = questions[questionIndex].question;
+    showQuestion.innerHTML = questions[questionIndex].question;
     var showChoices = questions[questionIndex].choices;
-    quizQuestions.appendChild = (showQuestion);
+    quizQuestions.appendChild(showQuestion);
     }
 
     showChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
-        listItem.textContent = newItem;
+        listItem.innerHTML += "<button>" + newItem + "</button>";
         quizQuestions.appendChild(createUl);
         createUl.appendChild(listItem);
         listItem.addEventListener("click", (checkAnswer));
@@ -82,13 +82,13 @@ function nextQuestion(questionIndex) {
 
 // Event to compare user choices with correct answer
 function checkAnswer(event) {
-    var element = event.target;
+    var userChoice = event.target;
 
-    if (element.matches("li")) {
+    if (userChoice.matches("li")) {
         var answerFeedback = document.createElement("div");
         answerFeedback.setAttribute("id", "createDiv");
 
-        if (element.textContent == questions[questionIndex].answer) {
+        if (userChoice.textContent == questions[questionIndex].answer) {
             score++;
             createDiv.textContent = "Correct! 🥳";
         } else {
