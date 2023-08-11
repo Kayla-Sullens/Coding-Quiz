@@ -30,7 +30,7 @@ h1 {
     text-align: center;
 }
 
-li {
+ul {
     background-color: rgb(99, 141, 197);
     margin-top: 10px;
     padding 5px 15px;
@@ -39,7 +39,7 @@ li {
     color: whitesmoke;
 }
 
-#wrapper {
+#container {
     position: absolute;
     left: 30%;
     top: 20%;
@@ -48,7 +48,7 @@ li {
     border: 1px solid purple;
 }
 
-#startTime {
+#begin {
     background-color: rgb(99, 141, 197);
     margin-left: 33%;
     padding: 15px;
@@ -56,15 +56,18 @@ li {
     color: whitesmoke;
 }
 
-#questions {
+#quizQuestions {
     margin: 20px;
     color:black;
 }
 
-#currentTime {
+#timer {
     float: right;
 }
 
+#choicesUl li {
+    margin: 10px;
+}
 #createDiv {
     margin-top: 20px;
     border-top: 1px solid purple;
