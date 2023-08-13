@@ -121,23 +121,7 @@ function allDone() {
         timeIsUp.textContent = "Time's up! Your final score is" + score;
         quizQuestions.appendChild(createNewP)
     }
-// Input box and button for user to enter and submit initials
-        var enterInitials = document.createElement("label");
-        enterInitials.setAttribute("id", "initialsBox");
-        enterInitials.textContent = "Enter your intials: ";
-        quizQuestions.appendChild(enterInitials);
 
-        var userInput = document.createElement("input");
-        userInput.setAttribute("type", "text");
-        userInput.setAttribute("id", "initials");
-        userInput.textContent = "";
-        quizQuestions.appendChild(userInput);
-
-        var submitBtn = document.createElement("button");
-        submitBtn.setAttribute("type", "submit");
-        submitBtn.setAttribute("id", "submit");
-        submitBtn.textContent = "Submit";
-        quizQuestions.appendChild(createSubmit);
     // Determine whether to continue quiz or end quiz
     function continueQuiz(event) {
         questionIndex++;
@@ -149,8 +133,24 @@ function allDone() {
     }
 }
 
+// Input box and button for user to enter and submit initials
+var enterInitials = document.createElement("label");
+enterInitials.setAttribute("id", "initialsBox");
+enterInitials.textContent = "Enter your intials: ";
+quizQuestions.appendChild(enterInitials);
 
+var userInput = document.createElement("input");
+userInput.setAttribute("type", "text");
+userInput.setAttribute("id", "initials");
+userInput.textContent = "";
+quizQuestions.appendChild(userInput);
 
+var submitBtn = document.createElement("button");
+submitBtn.setAttribute("type", "submit");
+submitBtn.setAttribute("id", "submit");
+submitBtn.textContent = "Submit";
+quizQuestions.appendChild(createSubmit);
+var submitBtn = document.querySelector("#submit");
 // Event listener for the initials submit button
         submitBtn.addEventListener("click", function () {
             var initials = userInput.value;
