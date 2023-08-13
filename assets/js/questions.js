@@ -97,18 +97,8 @@ function checkAnswer(event) {
         }
 
     }
-    // Determine whether to continue quiz or end quiz
-    function continueQuiz(event) {
-        questionIndex++;
-        if (questionIndex <= questions.length) {
-            nextQuestion(questionIndex);
-        } else {
-            allDone();
-        }
-    }
-}
 
-// Function to append the last page
+    // Function to append the last page
 function allDone() {
     quizQuestions.innerHTML = "";
     timer.innerHTML = "";
@@ -148,6 +138,18 @@ function allDone() {
         submitBtn.setAttribute("id", "submit");
         submitBtn.textContent = "Submit";
         quizQuestions.appendChild(createSubmit);
+    // Determine whether to continue quiz or end quiz
+    function continueQuiz(event) {
+        questionIndex++;
+        if (questionIndex <= questions.length) {
+            nextQuestion(questionIndex);
+        } else {
+            allDone();
+        }
+    }
+}
+
+
 
 // Event listener for the initials submit button
         submitBtn.addEventListener("click", function () {
@@ -194,7 +196,6 @@ if (allScores !== null) {
         highScore.appendChild(createLi);
     }
 }
-
 // Event listener to go back to index page
 goBack.addEventListener("click", function () {
     window.location.replace("./index.html");
